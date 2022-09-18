@@ -1,4 +1,4 @@
-# This repository is my study note at "Nomad coder" [https://nomadcoders.co/] about Next.js (beginner class)
+# This repository is my study note at [Nomad coder](https://nomadcoders.co/) about Next.js (beginner class)
 
 ## 1. Pages in Next.js
 
