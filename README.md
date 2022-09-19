@@ -35,3 +35,15 @@
   3. Under very slow network environment, User can see your HTML structure fast instead of white empty box while calling javascript
 
   4. After sending the HTML first, when the JavaScript transmission is completed, it becomes a React app in the browser. It is `Hydration`
+
+## 3. Routing
+
+### import Link from "next/link"
+
+- Why should not use `<a>` tag.
+
+  1. Next.js makes warning to acnhor tag, because acnhor tag makes whole pages going to be reloaded.
+
+  2. It is very similar reason why use `<Link>` component in React.js
+
+  3. You can not pass props or className to `<Link>` component in Next.js (defference from React). So recommand to use like this &rarr; `<Link href="/hello"><a ...some props...> Hello </a></Link>`
