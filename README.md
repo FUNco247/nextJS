@@ -24,7 +24,7 @@
 
   3. If user disable javascript in their browser, they can not see anything.
 
-  4. Under very slow network environment, User only can see white box in the beginning becaue they only get empty "<div id = "root"></div>"
+  4. Under very slow network environment, User only can see white box in the beginning becaue they only get empty `<div id = "root"></div>`
 
 - SSR
 
