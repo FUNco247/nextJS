@@ -48,7 +48,7 @@
 
   3. You can not pass props or className to `<Link>` component in Next.js (defference from React). So recommand to use like this &rarr; `<Link href="/hello"><a ...some props...> Hello </a></Link>`
 
-## CSS Modules
+## 4. CSS Modules
 
 ### CSS file name should be end ".module.css"
 
