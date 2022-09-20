@@ -47,3 +47,13 @@
   2. It is very similar reason why use `<Link>` component in React.js
 
   3. You can not pass props or className to `<Link>` component in Next.js (defference from React). So recommand to use like this &rarr; `<Link href="/hello"><a ...some props...> Hello </a></Link>`
+
+## CSS Modules
+
+### CSS file name should be end ".module.css"
+
+- why? and what is module.css
+
+  1. To import css as a javascript object
+
+  2. A classname imported as a module will be changed to avoid overlap. So you can use same className in other component
