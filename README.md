@@ -73,7 +73,7 @@
 
 - Global CSS
 
-  - Module and styled jsx is isolated. So, to add global style like font-family, check below
+  - Module and styled jsx is isolated. So, to add global style like font-family, check below <br/>
 
   1. First way is add `global` props to styled jsx &rarr; `<style jsx global>`
      But, It has problem. In Next.js... It should be considered on a page-by-page.
@@ -81,7 +81,7 @@
      Because there are no global style code in the "about.js" page.
      Global style in "home.js" affect to all component in "home.js" and not to other pages
 
-  - Of course you don't want to copy & paste add `<style jsx global>` to all pages, Check `_app.js`
+  - Of course you don't want to copy & paste add `<style jsx global>` to all pages, Check `_app.js` <br/>
 
   1. Name of `_app.js` is should be `_app.js` (never change, absolute)
 
