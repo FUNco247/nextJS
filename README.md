@@ -62,4 +62,4 @@
 
   1. `styled jsx` is unique Next.js way to add style
 
-  2. open HTML style tag like &rarr; `<style jsx>{` ... normal css ... `}</style>`
+  2. open HTML style tag like &rarr; `<style jsx>{ '... normal css "IN BACK TICK"...' }</style>`
