@@ -91,11 +91,17 @@
 
   3. component function in the `_app.js` need two arguments like below
 
-  ```export default function MyApp({ Component, pageProps }) {
+  ```javascript
+  export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <NavBar />
       <Component {...pageProps} />
+      <style jsx global>
+      a {
+        color : red;
+      }
+      </style>
     </>
   );
   }
