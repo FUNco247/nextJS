@@ -60,12 +60,46 @@
 
 - Another way to add CSS `styled JSX`
 
-  1. `styled jsx` is unique Next.js way to add style
+  `styled jsx` is unique Next.js way to add style
 
-  2. Open HTML style tag like &rarr; `<style jsx>{ '... normal css "INSIDE OF BACK TICK"...' }</style>`
+  1. Open HTML style tag like &rarr; `<style jsx>{ '... normal css "INSIDE OF BACK TICK"...' }</style>`
 
-  3. Styled jsx is isolated in the component. If you add style in index.js, It dosen't affect to your other components nav.js for example.
+  2. Styled jsx is isolated in the component(scope current component only).
+     If you add style in index.js, It dosen't affect to your other components nav.js for example.
 
-  4. If you add style in styled jsx way, Next.js add random className to your html tag.
+  3. If you add style in styled jsx way, Next.js add random className to your html tag.
 
-  5. If you don't want to import CSS file and want to do inside one file, use styled jsx
+  4. If you don't want to import CSS file and want to do inside one file, use styled jsx
+
+- Global CSS
+
+  - Module and styled jsx is isolated. So, to add global style like font-family, check below
+
+  1. First way is add `global` props to styled jsx &rarr; `<style jsx global>`
+     But, It has problem. In Next.js... It should be considered on a page-by-page.
+     If you add global jsx style to "home.js", It doesnt mean that it workf same in "about.js" page.
+     Because there are no global style code in the "about.js" page.
+     Global style in "home.js" affect to all component in "home.js" and not to other pages
+
+  - Of course you don't want to copy & paste add `<style jsx global>` to all pages, Check `_app.js`
+
+  1. Name of `_app.js` is should be `_app.js` (never change, absolute)
+
+  2. Next.js will se `_app.js` file before rendering all other pages or components.
+     So, If you do something in `_app.js`, It will affect to all components
+     You can add global components or styles in here
+
+  3. component function in the `_app.js` need two arguments like below
+
+  ```export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <NavBar />
+      <Component {...pageProps} />
+    </>
+  );
+  }
+  // Whole components will be rendered below <NavBar />
+  ```
+
+  - Or using `globals.css` you already got automatically
