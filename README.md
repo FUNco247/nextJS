@@ -105,7 +105,7 @@
     </>
   );
   }
-  // Whole components will be rendered below <NavBar />
+  // Whole components will be rendered below <NavBar /> and whole "a" tag will be colored "red"
   ```
 
   - Or using `globals.css` you already got automatically
