@@ -57,3 +57,9 @@
   1. To import css as a javascript object
 
   2. A classname imported as a module will be changed to avoid overlap. So you can use same className in other component
+
+- Another way to add CSS `styled JSX`
+
+  1. `styled jsx` is unique Next.js way to add style
+
+  2. open HTML style tag like &rarr; `<style jsx>{` ... normal css ... `}</style>`
