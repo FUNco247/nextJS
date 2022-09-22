@@ -62,4 +62,10 @@
 
   1. `styled jsx` is unique Next.js way to add style
 
-  2. open HTML style tag like &rarr; `<style jsx>{ '... normal css "IN BACK TICK"...' }</style>`
+  2. Open HTML style tag like &rarr; `<style jsx>{ '... normal css "INSIDE OF BACK TICK"...' }</style>`
+
+  3. Styled jsx is isolated in the component. If you add style in index.js, It dosen't affect to your other components nav.js for example.
+
+  4. If you add style in styled jsx way, Next.js add random className to your html tag.
+
+  5. If you don't want to import CSS file and want to do inside one file, use styled jsx
