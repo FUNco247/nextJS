@@ -79,9 +79,9 @@
      But, It has problem. In Next.js... It should be considered on a page-by-page.
      If you add global jsx style to "home.js", It doesnt mean that it workf same in "about.js" page.
      Because there are no global style code in the "about.js" page.
-     Global style in "home.js" affect to all component in "home.js" and not to other pages
+     Global style in "home.js" affect to all component in "home.js" and not to other pages<br/>
 
-  - Of course you don't want to copy & paste add `<style jsx global>` to all pages, Check `_app.js` <br/><br/>
+  - Of course you don't want to copy & paste add `<style jsx global>` to all pages, Check `_app.js` <br/>
 
   1. Name of `_app.js` is should be `_app.js` (never change, absolute)
 
