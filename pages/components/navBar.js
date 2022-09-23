@@ -6,6 +6,7 @@ export default function NavBar() {
   const route = useRouter();
   return (
     <nav className={styles.nav}>
+      <h2>Navigation</h2>
       <Link href="/">
         <a className={route.pathname === "/" ? styles.active : styles.inActive}>
           Home
@@ -18,6 +19,15 @@ export default function NavBar() {
           }
         >
           About
+        </a>
+      </Link>
+      <Link href="/movie">
+        <a
+          className={
+            route.pathname === "/movie" ? styles.active : styles.inActive
+          }
+        >
+          Movie app
         </a>
       </Link>
     </nav>
