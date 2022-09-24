@@ -6,7 +6,6 @@ export default function NavBar() {
   const route = useRouter();
   return (
     <nav className={styles.nav}>
-      <h2>Navigation</h2>
       <Link href="/">
         <a className={route.pathname === "/" ? styles.active : styles.inActive}>
           Home

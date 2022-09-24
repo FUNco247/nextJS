@@ -6,6 +6,7 @@ export default function About() {
     <main className={styles.main}>
       <Seo title="About" />
       <h1>About</h1>
+      <div></div>
     </main>
   );
 }
