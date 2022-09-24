@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 import styles from "../styles/Home.module.css";
 import Seo from "./components/seo";
 
@@ -15,11 +16,20 @@ export default function Movie() {
       setMovies(results);
     })();
   }, []);
+  const ref = useRef();
+  const { events } = useDraggable(ref, {
+    applyRubberBandEffect: true,
+    decayRate: 1,
+  });
   return (
     <>
       <main className={styles.main}>
         <Seo title="Home" />
-        <div className="movieWrap">
+        <div
+          className="movieWrap flex space-x-3 py-3 overflow-x-scroll scrollbar-hide"
+          {...events}
+          ref={ref}
+        >
           {!movies
             ? null
             : movies.map((movie) => (
@@ -37,25 +47,23 @@ export default function Movie() {
       <style jsx>{`
         .movieWrap {
           display: flex;
-          overflow-x: hidden;
-          overflow-x: auto;
+          overflow-x: scroll;
           width: 80vw;
-          scroll-snap-type: x mandatory;
+          //scroll-snap-type: x mandatory;
         }
 
         .movieWrap::-webkit-scrollbar {
           display: none;
-          cursor: grab;
         }
         .movie {
+          flex: none
           display: flex;
           flex-direction: column;
           align-items: center;
           background-color: rgba(0, 0, 0, 0.7);
           margin: 20px;
-          scroll-snap-align: start;
+          //scroll-snap-align: start;
           min-width: 300px;
-          cursor: grab;
         }
         h3 {
           margin: 10 0;
