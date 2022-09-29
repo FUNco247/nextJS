@@ -114,7 +114,7 @@
 
   ### `redirects()` function will automatically redirect your user
 
-  1. In next.config file
+  1. In next.config file<br/><br/>
 
   ```javascript
   async redirects() {
@@ -130,9 +130,9 @@
 
   - `source` is initial url
   - `destination` is new url
-  - `permanent` mean that browser or search engiene will remember this redirection
+  - `permanent` mean that browser or search engiene will remember this redirection<br/><br/>
 
-  2. can get url parameter and other path
+  2. can get url parameter and other path<br/><br/>
 
   - `/egacy/movie/123` to `movie/123`
 
@@ -164,7 +164,7 @@
 
   ### `rewrite()` function will mask your url
 
-  1. movie api is used in this project like below
+  1. movie api is used in this project like below<br/><br/>
 
   - pages/components/movie.js
 
