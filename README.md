@@ -110,85 +110,113 @@
 
   - Or using `globals.css` you already got automatically
 
-  ## 5. Redirects and Rewrites
+## 5. Redirects and Rewrites
 
-  ### `redirects()` function will automatically redirect your user
+### `redirects()` function will automatically redirect your user
 
-  1. In next.config file<br/><br/>
+1. In next.config file<br/><br/>
 
-  ```javascript
-  async redirects() {
-    return [
-      {
-        source: "/legacymovie",
-        destination: "/movie",
-        permanent: false
-      },
-    ]
-  }
-  ```
+```javascript
+async redirects() {
+  return [
+    {
+      source: "/legacymovie",
+      destination: "/movie",
+      permanent: false
+    },
+  ]
+}
+```
 
-  - `source` is initial url
-  - `destination` is new url
-  - `permanent` mean that browser or search engiene will remember this redirection<br/><br/>
+- `source` is initial url
+- `destination` is new url
+- `permanent` mean that browser or search engiene will remember this redirection<br/><br/>
 
-  2. can get url parameter and other path<br/><br/>
+2. can get url parameter and other path<br/><br/>
 
-  - `/egacy/movie/123` to `movie/123`
+- `/egacy/movie/123` to `movie/123`
 
-  ```javascript
-  async redirects() {
-    return [
-      {
-        source: "/legacymovie/:movieId",
-        destination: "/movie/:movieId",
-        permanent: false,
-      },
-    ]
-  }
-  ```
+```javascript
+async redirects() {
+  return [
+    {
+      source: "/legacymovie/:movieId",
+      destination: "/movie/:movieId",
+      permanent: false,
+    },
+  ]
+}
+```
 
-  - `/egacy/movie/123/comment/1234` to `movie/123/comment/1234`
+- `/egacy/movie/123/comment/1234` to `movie/123/comment/1234`
 
-  ```javascript
-  async redirects() {
-    return [
-      {
-        source: "/legacymovie/:movieId*",
-        destination: "/movie/:movieId*",
-        permanent: false,
-      },
-    ]
-  }
-  ```
+```javascript
+async redirects() {
+  return [
+    {
+      source: "/legacymovie/:movieId*",
+      destination: "/movie/:movieId*",
+      permanent: false,
+    },
+  ]
+}
+```
 
-  ### `rewrite()` function will mask your url
+### `rewrite()` function will mask your url
 
-  1. movie api is used in this project like below<br/><br/>
+1. movie api is used in this project like below<br/><br/>
 
-  - pages/components/movie.js
+- pages/components/movie.js
 
-  ```javascript
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch("api/movie")).json();
-      //console.log(results);
-      setMovies(results);
-    })();
-  }, []);
-  ```
+```javascript
+useEffect(() => {
+  (async () => {
+    const { results } = await (await fetch("api/movie")).json();
+    //console.log(results);
+    setMovies(results);
+  })();
+}, []);
+```
 
-  - next.config.js
+- next.config.js
 
-  ```javascript
-  async rewrites() {
-    return [
-      {
-        source: "/api/movie",
-        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-      },
-    ];
-  }
-  ```
+```javascript
+async rewrites() {
+  return [
+    {
+      source: "/api/movie",
+      destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+    },
+  ];
+}
+```
 
-  - source is masked url. you can hide your api key in the browser
+- source is masked url. you can hide your api key in the browser
+
+## 6. Server Side Rendering
+
+### You can choose SSR or CSR
+
+1. By using `getServerSideProps()` function, you can do something in server and then send the data object to front page <br/><br/>
+
+- pages/components/movie.js
+
+```javascript
+
+export default function Home ({result}){
+  <...>
+}
+
+export async function getServerSideProps() {
+  const { results } = await (
+    await fetch("http://localhost:3000/api/movie")
+  ).json();
+  return {
+    props: { results },
+  };
+}
+```
+
+- Following above code, server is going to fetch data and pre-render with the data. So, no loading state in front page
+
+- You can choose SSR (wait some time and show all to clients) vs CSR (show someting first with the loading message and wait data fetching)

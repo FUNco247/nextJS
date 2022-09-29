@@ -9,23 +9,8 @@ const nextConfig = {
       {
         source: "/legacymovie",
         destination: "/movie",
-        permanent: false, // browser or dearch engiene will remember this redirection
+        permanent: false,
       },
-      /**
-       * can get url parameter and reuse
-      ```javascript
-      source: "/legacymovie/:movieId",
-      destination: "/movie/:movieId",
-      permanent: false, 
-      ```
-
-       * can get all rest url path and reuse with "*"
-      ```javascript
-      source: "/legacymovie/:movieId*",
-      destination: "/movie/:movieId*",
-      permanent: false, 
-      ```
-       */
     ];
   },
   async rewrites() {

@@ -3,32 +3,30 @@ import { useDraggable } from "react-use-draggable-scroll";
 import styles from "../styles/Home.module.css";
 import Seo from "./components/seo";
 
-export default function Movie() {
-  const [movies, setMovies] = useState([]);
+export default function Movie({ results }) {
+  /* const [movies, setMovies] = useState([]);
   useEffect(() => {
     (async () => {
       const { results } = await (await fetch("api/movie")).json();
-      //console.log(results);
       setMovies(results);
     })();
-  }, []);
+  }, []); */
   const ref = useRef();
   const { events } = useDraggable(ref, {
     applyRubberBandEffect: true,
-    decayRate: 1,
+    decayRate: 0.5,
   });
   return (
     <>
       <main className={styles.main}>
-        <Seo title="Home" />
+        <Seo title="Movie" />
         <div
           className="movieWrap flex space-x-3 py-3 overflow-x-scroll scrollbar-hide"
           {...events}
           ref={ref}
         >
-          {!movies
-            ? null
-            : movies.map((movie) => (
+          {results
+            ? results.map((movie) => (
                 <div className="movie" key={movie.id}>
                   <h3>{movie.original_title}</h3>
                   <img
@@ -37,7 +35,8 @@ export default function Movie() {
                   />
                   <h4>{movie.overview}</h4>
                 </div>
-              ))}
+              ))
+            : ""}
         </div>
       </main>
       <style jsx>{`
@@ -78,4 +77,13 @@ export default function Movie() {
       `}</style>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const { results } = await (
+    await fetch("http://localhost:3000/api/movie")
+  ).json();
+  return {
+    props: { results },
+  };
 }
