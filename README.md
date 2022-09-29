@@ -109,3 +109,86 @@
   ```
 
   - Or using `globals.css` you already got automatically
+
+  ## 5. Redirects and Rewrites
+
+  ### `redirects()` function will automatically redirect your user
+
+  1. In next.config file
+
+  ```javascript
+  async redirects() {
+    return [
+      {
+        source: "/legacymovie",
+        destination: "/movie",
+        permanent: false
+      },
+    ]
+  }
+  ```
+
+  - `source` is initial url
+  - `destination` is new url
+  - `permanent` mean that browser or search engiene will remember this redirection
+
+  2. can get url parameter and other path
+
+  - `/egacy/movie/123` to `movie/123`
+
+  ```javascript
+  async redirects() {
+    return [
+      {
+        source: "/legacymovie/:movieId",
+        destination: "/movie/:movieId",
+        permanent: false,
+      },
+    ]
+  }
+  ```
+
+  - `/egacy/movie/123/comment/1234` to `movie/123/comment/1234`
+
+  ```javascript
+  async redirects() {
+    return [
+      {
+        source: "/legacymovie/:movieId*",
+        destination: "/movie/:movieId*",
+        permanent: false,
+      },
+    ]
+  }
+  ```
+
+  ### `rewrite()` function will mask your url
+
+  1. movie api is used in this project like below
+
+  - pages/components/movie.js
+
+  ```javascript
+  useEffect(() => {
+    (async () => {
+      const { results } = await (await fetch("api/movie")).json();
+      //console.log(results);
+      setMovies(results);
+    })();
+  }, []);
+  ```
+
+  - next.config.js
+
+  ```javascript
+  async rewrites() {
+    return [
+      {
+        source: "/api/movie",
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+    ];
+  }
+  ```
+
+  - source is masked url. you can hide your api key in the browser

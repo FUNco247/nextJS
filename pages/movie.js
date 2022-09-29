@@ -7,11 +7,7 @@ export default function Movie() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     (async () => {
-      const { results } = await (
-        await fetch(
-          "https://api.themoviedb.org/3/movie/popular?api_key=66dca24d08fd3a306a6425e77a96eb22"
-        )
-      ).json();
+      const { results } = await (await fetch("api/movie")).json();
       //console.log(results);
       setMovies(results);
     })();
