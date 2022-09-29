@@ -203,7 +203,7 @@ async rewrites() {
 
 ```javascript
 
-export default function Home ({result}){
+export default function Home ({results}){
   <...>
 }
 
