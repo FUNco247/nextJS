@@ -12,6 +12,19 @@
 
 - You can use jsx component without import "React". But, if you want to use hooks like "useState()", you must import
 
+### About dynamic routing
+
+- So, how to set route like `movie/1234`? (1234 mean movie ID)
+
+- And how to set route loke `movie/comment`?
+
+- root URL should same as folder name
+
+> movie
+>
+> > comment.js
+> > [id].js
+
 ## 2. CSR vs SSR
 
 ### One of the best features of Next.js is `static pre rendering`
