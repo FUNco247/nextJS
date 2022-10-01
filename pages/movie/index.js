@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
-import styles from "../styles/Home.module.css";
-import Seo from "./components/seo";
+import Seo from "../components/seo";
 
 export default function Movie({ results }) {
   /* const [movies, setMovies] = useState([]);
@@ -18,7 +17,7 @@ export default function Movie({ results }) {
   });
   return (
     <>
-      <main className={styles.main}>
+      <main>
         <Seo title="Movie" />
         <div
           className="movieWrap flex space-x-3 py-3 overflow-x-scroll scrollbar-hide"
@@ -40,6 +39,16 @@ export default function Movie({ results }) {
         </div>
       </main>
       <style jsx>{`
+        main {
+          min-height: 100vh;
+          padding: 4rem 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
         .movieWrap {
           display: flex;
           overflow-x: scroll;
