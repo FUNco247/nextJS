@@ -20,13 +20,11 @@
 
 - root URL should same as folder name
 
-```
-.pages
-
-├─ movie
-├ ├─ comment.js
-├ ├─ [id].js
-```
+> pages
+>
+> > movie
+> >
+> > > comment.js <br/> [id].js
 
 ## 2. CSR vs SSR
 
